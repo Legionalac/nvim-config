@@ -122,7 +122,14 @@ local config = function()
 	local stylua = require("efmls-configs.formatters.stylua")
 	local flake8 = require("efmls-configs.linters.flake8")
 	local black = require("efmls-configs.formatters.black")
-	local eslint = require("efmls-configs.linters.eslint")
+    local eslint = {
+        lintCommand = "eslint_d -f unix --stdin --stdin-filename ${INPUT}",
+        lintStdin = true,
+        lintFormats = {"%f:%l:%c: %m"},
+        lintIgnoreExitCode = true,
+        formatCommand = "eslint_d --fix-to-stdout --stdin --stdin-filename=${INPUT}",
+        formatStdin = true
+    }
 	local prettier_d = require("efmls-configs.formatters.prettier_d")
 	local fixjson = require("efmls-configs.formatters.fixjson")
 	local shellcheck = require("efmls-configs.linters.shellcheck")
@@ -162,8 +169,9 @@ local config = function()
 			codeAction = true,
 			completion = true,
 		},
-		settings = {
-			languages = {
+        settings = {
+            rootMarkers = {".git/"},
+            languages = {
 				lua = { luacheck, stylua },
 				python = { flake8, black },
 				typescript = { eslint, prettier_d },
