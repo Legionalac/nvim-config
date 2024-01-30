@@ -1,10 +1,12 @@
 return {
-	"catppuccin/nvim",
-	name = "theme",
-	lazy = false,
-	priority = 999,
-	config = function()
-		vim.cmd("colorscheme catppuccin")
-		require("catppuccin").setup({})
-	end,
+    "folke/tokyonight.nvim",
+    lazy = false,
+    priority = 1000,
+    opts = {},
+    config = function ()
+        vim.cmd("colorscheme tokyonight")
+        require("tokyonight").setup({
+            style = "night",
+        })
+    end
 }

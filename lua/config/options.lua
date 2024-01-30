@@ -23,7 +23,6 @@ opt.signcolumn = "yes"
 opt.cmdheight = 1
 opt.scrolloff = 10
 opt.completeopt = "menuone,noinsert,noselect"
-
 -- Behaviour
 opt.hidden = true
 opt.errorbells = false
@@ -40,7 +39,7 @@ opt.selection = "exclusive"
 opt.mouse = "a"
 opt.clipboard:append("unnamedplus")
 opt.modifiable = true
-opt.guicursor =''
+opt.guicursor =""
 opt.encoding = "UTF-8"
 opt.showmode = false
 
